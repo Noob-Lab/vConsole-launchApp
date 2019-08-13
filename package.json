@@ -5,6 +5,11 @@
   "main": "dist/index.js",
   "jsnext:main": "dist/index.aio.js",
   "module": "dist/index.aio.js",
+  "keywords": [
+    "vconsole",
+    "vconsole-launchapp",
+    "launchapp",
+  ],
   "sideEffects": false,
   "srctype": "js",
   "scripts": {

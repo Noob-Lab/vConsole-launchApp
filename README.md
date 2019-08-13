@@ -34,3 +34,6 @@ import LaunchApp from 'vConsole-launchApp';
     window.vConsole.addPlugin(launchApp)
 ```
 
+## License
+
+MIT
