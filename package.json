@@ -1,9 +1,9 @@
 {
-  "name": "vconsole-launchapp",
+  "name": "vconsole-launch",
   "version": "0.1.0",
   "description": "vconsole,唤起app，二维码扫描",
   "main": "dist/index.js",
-  "jsnext:main": "dist/index.aio.js",
+  "jsnext:main": "src/launchApp/index.js",
   "module": "dist/index.aio.js",
   "keywords": [
     "vconsole",
