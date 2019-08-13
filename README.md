@@ -4,7 +4,7 @@
 
 
 
-vConsole 的 LaunchApp 插件，用于刷新页面，查看二维码，在指定app中唤起当前页面
+[vConsole](https://github.com/Tencent/vConsole) 的 LaunchApp 插件，用于刷新页面，查看二维码，在指定app中唤起当前页面
 
 
 
