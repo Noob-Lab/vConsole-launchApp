@@ -8,7 +8,7 @@
   "keywords": [
     "vconsole",
     "vconsole-launchapp",
-    "launchapp",
+    "launchapp"
   ],
   "sideEffects": false,
   "srctype": "js",
