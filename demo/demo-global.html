@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Mocha</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div id="mocha"></div>
+
+    <script>
+    </script>
+    <script src="http://wechatfe.github.io/vconsole/lib/vconsole.min.js?v=3.3.0"></script>
+    <script src="../dist/index.aio.js"></script>
+    <script>
+     // 初始化vConsole
+    window.vConsole = new window.VConsole();  
+    var launchApp = new window['vconsole-launchapp'](vConsole,{
+      'jfwallet1': {
+        btntext:'钱包中打开',
+        prefix: 'jfwallet://JFWebViewModelProtocol?startPageUrl='
+      }},'LaunchAPP', 'LaunchAPP')
+    window.vConsole.addPlugin(launchApp)
+    </script>
+
+</body>
+
+</html>
