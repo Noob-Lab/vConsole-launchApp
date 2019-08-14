@@ -212,6 +212,8 @@
         var canvasText = window.location.href;
         qrcode_min.toCanvas(canvas, canvasText, function (error) {
           if (error) console.error(error);
+          canvas.style.height = '60vw';
+          canvas.style.width = '60vw';
           console.log('success!');
         });
       }
