@@ -1,5 +1,5 @@
 /*!
- * vconsole-launchapp 0.1.0 (https://github.com/yanhaijing/jslib-base)
+ * vconsole-launchapp 0.1.1 (https://github.com/yanhaijing/jslib-base)
  * API https://github.com/yanhaijing/jslib-base/blob/master/doc/api.md
  * Copyright 2017-2019 yanhaijing. All Rights Reserved
  * Licensed under MIT (https://github.com/yanhaijing/jslib-base/blob/master/LICENSE)
@@ -96,6 +96,12 @@
 
   });
 
+  var isQBApp = /jfwallet/i.test(navigator.userAgent);
+  var isWKApp = /jfwklc/i.test(navigator.userAgent);
+  var isWeChat = /MicroMessenger/i.test(navigator.userAgent); // 是否是微信环境
+
+  var isApp = isQBApp || isWKApp; // 是否是app环境
+
   var VConsoleLaunchAPPTab =
   /*#__PURE__*/
   function (_VConsole$VConsolePlu) {
@@ -114,9 +120,7 @@
 
       _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(VConsoleLaunchAPPTab)).call.apply(_getPrototypeOf2, [this].concat(args)));
       _this.$ = vConsole.$;
-      _this.$tabbox = _this.$.render(tpllaunch, {});
-      _this.currentType = ''; // cookies, localstorage, ...
-      // 按钮
+      _this.$tabbox = _this.$.render(tpllaunch, {}); // 按钮
 
       _this.typeNameMap = {
         'jfwklc': {
@@ -133,16 +137,19 @@
         }
       };
 
+      if (isApp) {
+        // 按钮
+        _this.typeNameMap = {
+          'Refresh': {
+            btntext: 'Refresh',
+            prefix: ''
+          }
+        };
+      }
+
       if (vConsole.tool.isObject(options)) {
         _this.typeNameMap = Object.assign(_this.typeNameMap, options);
-      } // /**
-      //  * app 前缀
-      //  */
-      // this.prefixMap = {
-      //   'jfwklc': 'jfwklc://pushWindow?url=',
-      //   'jfwallet': 'jfwallet://JFWebViewModelProtocol?startPageUrl=',
-      // } 
-
+      }
 
       return _this;
     }
@@ -234,9 +241,13 @@
           console.log('reoaded!😊');
           return false;
         } else {
-          var schema = this.typeNameMap[type].prefix + window.location.href;
-          console.log('schema', schema);
-          window.location = schema;
+          if (!isWeChat) {
+            var schema = this.typeNameMap[type].prefix + window.location.href;
+            console.log('schema', schema);
+            window.location = schema;
+          } else {
+            alert('请在浏览器中打开本页面');
+          }
         }
       }
     }]);

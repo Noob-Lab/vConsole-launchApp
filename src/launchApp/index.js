@@ -1,12 +1,14 @@
 import tpllaunch from './launch.html'
 import QRCode from '../../node_modules/qrcode/build/qrcode.min.js'
-
+ const isQBApp = /jfwallet/i.test(navigator.userAgent)
+ const isWKApp = /jfwklc/i.test(navigator.userAgent)
+ const isWeChat = /MicroMessenger/i.test(navigator.userAgent) // 是否是微信环境
+ const isApp = isQBApp || isWKApp // 是否是app环境
 class VConsoleLaunchAPPTab extends VConsole.VConsolePlugin {
   constructor(vConsole,options,...args) {
     super(...args);
     this.$ = vConsole.$
     this.$tabbox = this.$.render(tpllaunch, {});
-    this.currentType = ''; // cookies, localstorage, ...
     // 按钮
     this.typeNameMap = {
       'jfwklc': {
@@ -22,16 +24,19 @@ class VConsoleLaunchAPPTab extends VConsole.VConsolePlugin {
         prefix:''
       }
     }
+    if(isApp){
+          // 按钮
+    this.typeNameMap = {
+      'Refresh': {
+        btntext:'Refresh',
+        prefix:''
+      }
+    }
+    }
     if (vConsole.tool.isObject(options)) {
       this.typeNameMap = Object.assign(this.typeNameMap,options)
     }
-    // /**
-    //  * app 前缀
-    //  */
-    // this.prefixMap = {
-    //   'jfwklc': 'jfwklc://pushWindow?url=',
-    //   'jfwallet': 'jfwallet://JFWebViewModelProtocol?startPageUrl=',
-    // } 
+
   }
   /**
    * 渲染面板
@@ -98,9 +103,13 @@ class VConsoleLaunchAPPTab extends VConsole.VConsolePlugin {
       console.log('reoaded!😊')
       return false
     } else {
+      if (!isWeChat) {
       let schema = this.typeNameMap[type].prefix+ window.location.href
       console.log('schema',schema)
       window.location = schema
+      } else {
+        alert('请在浏览器中打开本页面')
+      }
     }
   }
 }

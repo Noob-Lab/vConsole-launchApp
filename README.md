@@ -12,7 +12,7 @@
 
 vConsole-launchApp 遵循 vConsole 插件接口规范开发，详细规范请点击 vConsole插件文档 查看。
 
-从 [vConsole-launchApp]() 使用npm安装:
+使用npm安装:
 
 ```bash
 npm install vconsole-launchapp -D
