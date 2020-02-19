@@ -19,6 +19,10 @@ class VConsoleLaunchAPPTab extends VConsole.VConsolePlugin {
         btntext:'钱包中打开',
         prefix: 'jfwallet://JFWebViewModelProtocol?startPageUrl='
       },
+      'jfmall': {
+        btntext:'商城中打开',
+        prefix: 'jfmall://pub_web?url='
+      },      
       'Refresh': {
         btntext:'Refresh',
         prefix:''
